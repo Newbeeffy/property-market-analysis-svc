@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: property-market-analysis-svc
+
+server:
+  port: 8000
+  tomcat:
+    accesslog:
+      enabled: true
+      # %h remote host, %l ident, %u auth user, %{Host}i Host header,
+      # %r request line, %s status, %b response bytes, %D elapsed millis.
+      pattern: "%h %l %u %{Host}i \"%r\" %s %b %D"
+
+app:
+  model-service:
+    # Downstream model service (Task 1), reached by its in-cluster DNS name.
+    url: http://house-price-predict-svc
+    timeout-seconds: 5

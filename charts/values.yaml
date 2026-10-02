@@ -1,0 +1,19 @@
+replicaCount: 1
+
+image:
+  repository: interview/property-market-analysis-svc
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# Downstream model service (Task 1), reached by its in-cluster DNS name.
+modelService:
+  url: "http://house-price-predict-svc"
+  timeoutSeconds: 5
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 1000m
+    memory: 512Mi
